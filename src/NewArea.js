@@ -9,7 +9,6 @@ const NewAreaButton = {
   height: 40,
   backgroundColor: "#1e90ff",
   solid: "white",
-  marginLeft: 1160,
 };
 
 export default NewAreaButton;
