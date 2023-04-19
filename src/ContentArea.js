@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
 import axios from "axios";
-const baseURL = "https://todoapp-hk.microcms.io/api/v1/todo";
+const baseURL = "https://todoapp-web-api.herokuapp.com/todos";
 
 const buttonStyleOne = {
   borderRadius: 10,
@@ -43,7 +43,9 @@ const ContentArea = () => {
         },
       })
       .then((response) => {
-        setItemData(response.data.contents);
+        console.log(response);
+
+        setItemData(response.data.data);
       });
   }, []);
 
