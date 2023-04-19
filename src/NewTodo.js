@@ -1,6 +1,5 @@
 import "./App.css";
-
-const NewTodo = () => {
+function NewTodo() {
   return (
     <div>
       <h1 style={{ paddingLeft: 20 }}>TODO新規作成</h1>
@@ -48,6 +47,6 @@ const NewTodo = () => {
       </button>
     </div>
   );
-};
+}
 
 export default NewTodo;
