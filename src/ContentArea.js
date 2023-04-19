@@ -18,6 +18,7 @@ const buttonStyleOne = {
 const buttonStyleTwo = {
   borderRadius: 10,
   borderColor: "#red",
+  borderColor: "red",
   color: "white",
   fontSize: 15,
   width: 70,
