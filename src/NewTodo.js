@@ -1,5 +1,7 @@
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
-function NewTodo() {
+
+const NewTodo = () => {
   return (
     <div>
       <h1 style={{ paddingLeft: 20 }}>TODO新規作成</h1>
@@ -47,6 +49,6 @@ function NewTodo() {
       </button>
     </div>
   );
-}
+};
 
 export default NewTodo;
