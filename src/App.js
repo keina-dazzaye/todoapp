@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NewTodo from "./NewTodo";
 import { useNavigate } from "react-router-dom";
 
-const App = () => {
+function App() {
   return (
     <BrowserRouter>
       <Routes>
@@ -15,7 +15,7 @@ const App = () => {
       </Routes>
     </BrowserRouter>
   );
-};
+}
 
 function TextTop() {
   const navigate = useNavigate();

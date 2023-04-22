@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
 import axios from "axios";
+import NewTodo from "./NewTodo";
 const baseURL = "https://todoapp-web-api.herokuapp.com/todos";
 
 const buttonStyleOne = {
@@ -49,6 +50,14 @@ const ContentArea = () => {
       });
   }, []);
 
+  const todoDelete = (id) => {
+    axios
+      .delete("https://todoapp-web-api.herokuapp.com/todos/" + id)
+      .then(() => {
+        window.location.reload();
+      });
+  };
+
   return (
     // リストレンダリング
     <div>
@@ -59,7 +68,9 @@ const ContentArea = () => {
             <label htmlFor={item.title}>{item.title}</label>
             <p style={{ paddingLeft: 20, marginTop: 3 }}>{item.contents}</p>
             <button style={buttonStyleOne}>更新</button>
-            <button style={buttonStyleTwo}>削除</button>
+            <button style={buttonStyleTwo} onClick={() => todoDelete(item.id)}>
+              削除
+            </button>
           </div>
         );
       })}
