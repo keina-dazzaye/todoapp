@@ -1,7 +1,9 @@
 import "./App.css";
 import React from "react";
 import axios from "axios";
-import NewTodo from "./NewTodo";
+
+import { useNavigate } from "react-router-dom";
+
 const baseURL = "https://todoapp-web-api.herokuapp.com/todos";
 
 const buttonStyleOne = {
@@ -35,19 +37,21 @@ const contaierStyle = {
 };
 const ContentArea = () => {
   const [itemData, setItemData] = React.useState([]);
-
-  React.useEffect(() => {
+  const navigate = useNavigate();
+  const handleComplete = (id, complete) => {
+    const data = { complete: !complete };
     axios
-      .get(baseURL, {
-        headers: {
-          "X-MICROCMS-API-KEY": "TIFIkL1zBnkC3wngj8rjeqOt8hnzdCl0cSL0",
-        },
-      })
-      .then((response) => {
-        console.log(response);
-
-        setItemData(response.data.data);
+      .put("https://todoapp-web-api.herokuapp.com/todos/" + id, data)
+      .then(() => {
+        window.location.reload();
       });
+  };
+  React.useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      console.log(response);
+
+      setItemData(response.data.data);
+    });
   }, []);
 
   const todoDelete = (id) => {
@@ -64,10 +68,20 @@ const ContentArea = () => {
       {itemData.map((item) => {
         return (
           <div key={item.id} style={contaierStyle}>
-            <input type="checkbox" id={item.id} checked={item.complete} />
+            <input
+              type="checkbox"
+              id={item.id}
+              checked={item.complete}
+              onChange={() => handleComplete(item.id, item.complete)}
+            />
             <label htmlFor={item.title}>{item.title}</label>
             <p style={{ paddingLeft: 20, marginTop: 3 }}>{item.contents}</p>
-            <button style={buttonStyleOne}>更新</button>
+            <button
+              style={buttonStyleOne}
+              onClick={() => navigate("/update/" + item.id)}
+            >
+              更新
+            </button>
             <button style={buttonStyleTwo} onClick={() => todoDelete(item.id)}>
               削除
             </button>

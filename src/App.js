@@ -5,13 +5,14 @@ import NewAreaButton from "./NewArea";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NewTodo from "./NewTodo";
 import { useNavigate } from "react-router-dom";
-
+import UpdateTodo from "./UpdateTodo";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path={`/`} element={<TextTop />} />
         <Route path={`/new/`} element={<NewTodo />} />
+        <Route path={"/update/:id"} element={<UpdateTodo />} />
       </Routes>
     </BrowserRouter>
   );
